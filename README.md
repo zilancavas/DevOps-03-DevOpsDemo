@@ -32,6 +32,11 @@
 | 9       | Um einen bestehenden Eintrag zu aktualisieren, wurde ein PUT-Request an den Endpunkt `/Zilan/1` geschickt. Die JSON-Daten im Body enthalten die neuen Werte für `name`, `beschreibung`, `startDatum` und `endDatum`. Die Antwort zeigt, dass das Objekt erfolgreich aktualisiert wurde (`200 OK`). | ![](images/backend-10.png) |
 | 10 | Alle Änderungen wurden nach dem Commit via Terminal mit `git push origin main` erfolgreich ins GitHub-Repository übertragen. | ![](images/backend-11.png) |
 
+## Fazit
+Die Backend-Umsetzung war insgesamt erfolgreich, jedoch mit einigen technischen Herausforderungen verbunden. Zunächst bereitete die Konfiguration von **Spring Boot** Schwierigkeiten – die Anwendung startete zwar, doch die Datenbankverbindung und das automatische Laden von Testdaten funktionierten nicht auf Anhieb. Der Pfad zur `application.properties`-Datei sowie die korrekte Initialisierung der `DemoApplication` mussten überprüft und angepasst werden. Zudem war das Testing via Postman anfangs problematisch, da der **Web-Client lokale Endpunkte (localhost)** nicht unterstützt. Die Lösung war, die **Desktop-Version von Postman** zu installieren.
+Ein weiterer Stolperstein war das **Pushen ins GitHub-Repository**: Der Push wurde zunächst blockiert, da lokale Commits nicht mit dem Remote-Branch synchron waren. Erst durch einen manuellen `git pull` mit expliziter Konfiguration (`git config pull.rebase false`) konnte dieser Konflikt gelöst und die Änderungen erfolgreich übertragen werden.
+Trotz dieser Hürden konnte das Backend vollständig umgesetzt, getestet und dokumentiert werden.
+
 
 
 
