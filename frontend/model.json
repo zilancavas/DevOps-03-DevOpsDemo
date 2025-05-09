@@ -3,53 +3,6 @@
       "title": "DevOpsDemo FS25",
       "formList": [
         {
-          "id": "OwnUserForm",
-          "title": "NotImplemented",
-          "formFieldList": [
-            {
-              "type": "okButton",
-              "name": "Ok"
-            }
-          ]
-        },
-        {
-          "id": "NotImplementedForm",
-          "title": "Not Implemented",
-          "url": "/dummyform",
-          "headerVisible": false,
-          "footerVisible": false,
-          "borderStyle": "None",
-          "formFieldList": [
-            {
-              "id": "NotImplemented",
-              "type": "label",
-              "name": "NotImplementedMessage",
-              "width": 2
-            },
-            {
-              "type": "okButton",
-              "name": "Ok"
-            }
-          ]
-        },
-        {
-          "id": "NotImplementedFormModal",
-          "title": "NotImplemented",
-          "url": "/dummyform",
-          "formFieldList": [
-            {
-              "id": "NotImplemented",
-              "type": "label",
-              "name": "NotImplementedMessage",
-              "width": 2
-            },
-            {
-              "type": "okButton",
-              "name": "Ok"
-            }
-          ]
-        },
-        {
           "id": "ToDoForm",
           "title": { "default": "ToDo" },
           "url": "/todo",
@@ -69,6 +22,53 @@
               "maxLength": 4000,
               "height": 4,
               "width": 2
+            },
+            {
+              "type": "deleteButton",
+              "name": "Delete"
+            },
+            {
+              "type": "cancelButton",
+              "name": "Cancel"
+            },
+            {
+              "type": "okButton",
+              "name": "Ok"
+            }
+          ]
+        },
+        {
+          "id": "ZilanForm",
+          "title": { "default": "Zilan-Eintrag" },
+          "url": "/zilan",
+          "formFieldList": [
+            {
+              "id": "title",
+              "type": "text",
+              "name": { "default": "Titel" },
+              "required": true,
+              "width": 2
+            },
+            {
+              "id": "description",
+              "type": "text",
+              "name": { "default": "Beschreibung" },
+              "newRow": true,
+              "height": 4,
+              "width": 2
+            },
+            {
+              "id": "startDate",
+              "type": "date",
+              "name": { "default": "Start Datum" },
+              "newRow": true,
+              "width": 1
+            },
+            {
+              "id": "endDate",
+              "type": "date",
+              "name": { "default": "End Datum" },
+              "width": 1
             },
             {
               "type": "deleteButton",
@@ -106,8 +106,8 @@
             },
             {
               "type": "button",
-              "name": { "default": "Zilan Test" },
-              "icon": "fa-star",
+              "name": { "default": "Zilan-Test mit Datum" },
+              "icon": "fa-calendar",
               "color": "yellow",
               "page": "zilanPage",
               "width": 2,
@@ -151,18 +151,30 @@
               "type": "backbutton"
             },
             {
-              "type": "label",
-              "name": "Willkommen auf der Testseite von Zilan 🎉",
-              "newRow": true
+              "type": "newButton",
+              "name": { "default": "Neuer Zilan-Eintrag" },
+              "icon": "fa-plus-circle",
+              "color": "orange",
+              "width": 2,
+              "form": {
+                "form": "ZilanForm"
+              }
             },
             {
-              "type": "label",
-              "name": "Dies ist ein Frontend-Testeintrag.",
-              "newRow": true
+              "type": "list",
+              "name": "ZilanList",
+              "icon": "fa-list",
+              "color": "wet-asphalt",
+              "search": true,
+              "url": "/zilan",
+              "form": {
+                "form": "ZilanForm"
+              }
             }
           ]
         }
       ]
     }
   }
+  
   
