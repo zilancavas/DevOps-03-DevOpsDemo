@@ -25,6 +25,7 @@
 | 2       | Die Spring Boot Anwendung wurde mit dem Befehl `./gradlew bootRun` im Terminal gestartet. Zuvor wurde sichergestellt, dass die Datei `application.properties` korrekt konfiguriert ist (H2-In-Memory-Datenbank, Benutzername `sa`, kein Passwort). Die Applikation wurde erfolgreich auf Port 8080 gestartet, wie in der Konsole unten ersichtlich. | ![](images/backend-02.png) |
 | 3       | Die Spring Boot Anwendung wurde erfolgreich gestartet. Tomcat wurde auf Port 8080 initialisiert und die `DemoApplication` läuft. Die Zeile `Init Data` zeigt, dass initiale Daten geladen wurden. | ![](images/backend-03.png) |
 | 4       | Ich wollte Postman direkt über den Webbrowser (Safari) verwenden, doch dabei ist ein Fehler aufgetreten. Postman weist darauf hin, dass lokale Anfragen mit dem **Desktop Agent** durchgeführt werden müssen. Ich habe daher die Postman App heruntergeladen. | ![](images/backend-05.png) |
+| 5       | Nach der Installation der Postman Desktop App habe ich einen neuen HTTP-Request erstellen wollen. Dafür habe ich im Startbildschirm die Option **HTTP** ausgewählt, um eigene REST-Endpunkte zu testen. | ![](images/backend-06.png) |
 
 
 
