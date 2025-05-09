@@ -1,3 +1,40 @@
 # DevOps 03 DevOpsDemo
 
-## Lernjournal
+## Lernjournal Frontend 
+
+| Schritt | Beschreibung | Screenshot |
+|--------|--------------|------------|
+| 1 | Repository wurde über Visual Studio Code geklont. | ![](images/fronted-01.png) |
+| 2 | In den `frontend`-Ordner gewechselt und überprüft, ob `package.json` vorhanden ist. Danach wurden die NPM-Dependencies mit `npm install` installiert. | ![](images/fronted-02.png) |
+| 3 | Das Frontend wurde mit `npm start` erfolgreich gestartet und ist unter `localhost:3000` erreichbar. | ![](images/fronted-03.png) |
+| 4 | Das Backend wurde mit `./gradlew bootRun` gestartet. Der Spring Boot-Server läuft unter Port 8080. | ![](images/fronted-04.png) |
+| 5 | Das Projekt ist im Browser sichtbar. Die Startseite zeigt den Einstieg in die To-Do-Liste. | ![](images/fronted-05.png) |
+| 6 | Vorhandenes Frontend wurde erneut gestartet und getestet. Browserport wurde automatisch angepasst (Port 3000 war bereits belegt). | ![](images/fronted-06.png) |
+| 7 | Die To-Do-Seite wurde geöffnet und bestehende Kacheln angezeigt. Beispielhafte Einträge wie „Unit Tests“, „Deployment“ und „Organigramm“ sind sichtbar. | ![](images/fronted-07.png) |
+| 8 | Eine zusätzliche Kachel „Zilan Test“ wurde im Hauptmenü hinzugefügt, um die Frontenderweiterung zu demonstrieren. | ![](images/fronted-08.png) |
+| 9 | Alle Änderungen wurden committed und erfolgreich ins GitHub-Repository gepusht. | ![](images/fronted-09.png) |
+| 10 | Die neue Entity-Klasse `ZilanItem` wurde im Backend erstellt, mit Feldern für Name, Beschreibung und Zeitangaben. | ![](images/fronted-10.png) |
+| 11 | Das zugehörige Repository-Interface `ZilanItemRepository` wurde erstellt, um CRUD-Zugriffe auf die Datenbank zu ermöglichen. | ![](images/fronted-11.png) |
+| 12 | Ein neuer REST-Controller `ZilanItemController` wurde implementiert, der GET-, POST- und PUT-Endpunkte zur Verwaltung von `ZilanItem` bereitstellt. | ![](images/fronted-12.png) |
+| 13 | Der REST-Service wurde erfolgreich getestet: Backend läuft, Endpunkte sind über `localhost:8080/Zilan` erreichbar. | ![](images/fronted-13.png) |
+
+## Lernjournal Backend 
+| Schritt | Beschreibung                                                                                              | Screenshot              |
+|--------|-----------------------------------------------------------------------------------------------------------|--------------------------|
+| 1       | Im `backend`-Projekt wurde die Konfiguration der `application.properties` angepasst. Die H2-In-Memory-Datenbank wurde aktiviert und grundlegende Datenbankverbindungsdaten gesetzt. | ![](images/backend-01.png) |
+| 2       | Die Spring Boot Anwendung wurde mit dem Befehl `./gradlew bootRun` im Terminal gestartet. Zuvor wurde sichergestellt, dass die Datei `application.properties` korrekt konfiguriert ist (H2-In-Memory-Datenbank, Benutzername `sa`, kein Passwort). Die Applikation wurde erfolgreich auf Port 8080 gestartet, wie in der Konsole unten ersichtlich. | ![](images/backend-02.png) |
+| 3       | Die Spring Boot Anwendung wurde erfolgreich gestartet. Tomcat wurde auf Port 8080 initialisiert und die `DemoApplication` läuft. Die Zeile `Init Data` zeigt, dass initiale Daten geladen wurden. | ![](images/backend-03.png) |
+| 4       | Ich wollte Postman direkt über den Webbrowser (Safari) verwenden, doch dabei ist ein Fehler aufgetreten. Postman weist darauf hin, dass lokale Anfragen mit dem **Desktop Agent** durchgeführt werden müssen. Ich habe daher die Postman App heruntergeladen. | ![](images/backend-05.png) |
+| 5       | Nach der Installation der Postman Desktop App habe ich einen neuen HTTP-Request erstellen wollen. Dafür habe ich im Startbildschirm die Option **HTTP** ausgewählt, um eigene REST-Endpunkte zu testen. | ![](images/backend-06.png) |
+| 6       | In Postman habe ich erfolgreich einen POST-Request an den Endpunkt `/Zilan` gesendet. Im Body habe ich ein JSON-Objekt mit `name`, `beschreibung`, `startDatum` und `endDatum` übermittelt. Die Antwort bestätigte mit Status `200 OK`, dass das Objekt erfolgreich erstellt wurde und eine `id` zugewiesen bekam. | ![](images/backend-07.png) |       
+| 7       | Danach wurde ein GET-Request an den Endpunkt `/Zilan` gesendet, um alle gespeicherten Objekte abzurufen. Die Antwort enthielt das zuvor erstellte Objekt mit allen Details inklusive `id`. Der Statuscode `200 OK` bestätigt den erfolgreichen Abruf. | ![](images/backend-08.png) |
+| 8       | Anschliessend wurde ein DELETE-Request an den Endpunkt `/Zilan/2` gesendet. Damit wurde der Datensatz mit der ID 2 erfolgreich gelöscht. Die Rückmeldung `200 OK` bestätigt, dass der Löschvorgang vom Server erfolgreich ausgeführt wurde. | ![](images/backend-09.png) |
+| 9       | Um einen bestehenden Eintrag zu aktualisieren, wurde ein PUT-Request an den Endpunkt `/Zilan/1` geschickt. Die JSON-Daten im Body enthalten die neuen Werte für `name`, `beschreibung`, `startDatum` und `endDatum`. Die Antwort zeigt, dass das Objekt erfolgreich aktualisiert wurde (`200 OK`). | ![](images/backend-10.png) |
+
+
+
+
+
+
+
+
