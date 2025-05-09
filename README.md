@@ -4,7 +4,7 @@
 
 | Schritt | Beschreibung | Screenshot |
 |--------|--------------|------------|
-| 1 | Repository wurde über Visual Studio Code geklont. | ![](images/frontend-01.png) |
+| 1 | Repository wurde über Visual Studio Code geklont. | ![](images/fronted-01.png) |
 | 2 | In den `frontend`-Ordner gewechselt und überprüft, ob `package.json` vorhanden ist. Danach wurden die NPM-Dependencies mit `npm install` installiert. | ![](images/fronted-02.png) |
 | 3 | Das Frontend wurde mit `npm start` erfolgreich gestartet und ist unter `localhost:3000` erreichbar. | ![](images/fronted-03.png) |
 | 4 | Das Backend wurde mit `./gradlew bootRun` gestartet. Der Spring Boot-Server läuft unter Port 8080. | ![](images/fronted-04.png) |
