@@ -30,6 +30,7 @@
 | 7       | Danach wurde ein GET-Request an den Endpunkt `/Zilan` gesendet, um alle gespeicherten Objekte abzurufen. Die Antwort enthielt das zuvor erstellte Objekt mit allen Details inklusive `id`. Der Statuscode `200 OK` bestätigt den erfolgreichen Abruf. | ![](images/backend-08.png) |
 | 8       | Anschliessend wurde ein DELETE-Request an den Endpunkt `/Zilan/2` gesendet. Damit wurde der Datensatz mit der ID 2 erfolgreich gelöscht. Die Rückmeldung `200 OK` bestätigt, dass der Löschvorgang vom Server erfolgreich ausgeführt wurde. | ![](images/backend-09.png) |
 | 9       | Um einen bestehenden Eintrag zu aktualisieren, wurde ein PUT-Request an den Endpunkt `/Zilan/1` geschickt. Die JSON-Daten im Body enthalten die neuen Werte für `name`, `beschreibung`, `startDatum` und `endDatum`. Die Antwort zeigt, dass das Objekt erfolgreich aktualisiert wurde (`200 OK`). | ![](images/backend-10.png) |
+| 10 | Alle Änderungen wurden nach dem Commit via Terminal mit `git push origin main` erfolgreich ins GitHub-Repository übertragen. | ![](images/backend-11.png) |
 
 
 
