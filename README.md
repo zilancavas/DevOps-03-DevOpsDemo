@@ -10,7 +10,7 @@
 | 4 | Das Backend wurde mit `./gradlew bootRun` gestartet. Der Spring Boot-Server läuft unter Port 8080. | ![](images/fronted-04.png) |
 | 5 | Das Projekt ist im Browser sichtbar. Die Startseite zeigt den Einstieg in die To-Do-Liste. | ![](images/fronted-05.png) |
 | 6 | Vorhandenes Frontend wurde erneut gestartet und getestet. Browserport wurde automatisch angepasst (Port 3000 war bereits belegt). | ![](images/fronted-06.png) |
-| 7 | Die To-Do-Seite wurde geöffnet und bestehende Kacheln angezeigt. Beispielhafte Einträge wie „Unit Tests“, „Deployment“ und „Organigramm“ sind sichtbar. | ![](images/frontend-07.png) |
+| 7 | Die To-Do-Seite wurde geöffnet und bestehende Kacheln angezeigt. Beispielhafte Einträge wie „Unit Tests“, „Deployment“ und „Organigramm“ sind sichtbar. | ![](images/fronted-07.png) |
 | 8 | Eine zusätzliche Kachel „Zilan Test“ wurde im Hauptmenü hinzugefügt, um die Frontenderweiterung zu demonstrieren. | ![](images/fronted-08.png) |
 | 9 | Alle Änderungen wurden committed und erfolgreich ins GitHub-Repository gepusht. | ![](images/fronted-09.png) |
 | 10 | Die neue Entity-Klasse `ZilanItem` wurde im Backend erstellt, mit Feldern für Name, Beschreibung und Zeitangaben. | ![](images/fronted-10.png) |
