@@ -22,4 +22,6 @@
 | Schritt | Beschreibung                                                                                              | Screenshot              |
 |--------|-----------------------------------------------------------------------------------------------------------|--------------------------|
 | 1       | Im `backend`-Projekt wurde die Konfiguration der `application.properties` angepasst. Die H2-In-Memory-Datenbank wurde aktiviert und grundlegende Datenbankverbindungsdaten gesetzt. | ![](images/backend-01.png) |
+| 2       | Die Spring Boot Anwendung wurde mit dem Befehl `./gradlew bootRun` im Terminal gestartet. Zuvor wurde sichergestellt, dass die Datei `application.properties` korrekt konfiguriert ist (H2-In-Memory-Datenbank, Benutzername `sa`, kein Passwort). Die Applikation wurde erfolgreich auf Port 8080 gestartet, wie in der Konsole unten ersichtlich. | ![](images/backend-02.png) |
+
 
