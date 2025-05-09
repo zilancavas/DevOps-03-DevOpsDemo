@@ -27,6 +27,9 @@
 | 4       | Ich wollte Postman direkt über den Webbrowser (Safari) verwenden, doch dabei ist ein Fehler aufgetreten. Postman weist darauf hin, dass lokale Anfragen mit dem **Desktop Agent** durchgeführt werden müssen. Ich habe daher die Postman App heruntergeladen. | ![](images/backend-05.png) |
 | 5       | Nach der Installation der Postman Desktop App habe ich einen neuen HTTP-Request erstellen wollen. Dafür habe ich im Startbildschirm die Option **HTTP** ausgewählt, um eigene REST-Endpunkte zu testen. | ![](images/backend-06.png) |
 | 6       | In Postman habe ich erfolgreich einen POST-Request an den Endpunkt `/Zilan` gesendet. Im Body habe ich ein JSON-Objekt mit `name`, `beschreibung`, `startDatum` und `endDatum` übermittelt. Die Antwort bestätigte mit Status `200 OK`, dass das Objekt erfolgreich erstellt wurde und eine `id` zugewiesen bekam. | ![](images/backend-07.png) |
+| Schritt | Beschreibung                                                                                                                                        | Screenshot        
+| 7       | Danach wurde ein GET-Request an den Endpunkt `/Zilan` gesendet, um alle gespeicherten Objekte abzurufen. Die Antwort enthielt das zuvor erstellte Objekt mit allen Details inklusive `id`. Der Statuscode `200 OK` bestätigt den erfolgreichen Abruf. | ![](images/backend-08.png) |
+
 
 
 
