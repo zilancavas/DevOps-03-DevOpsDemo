@@ -1,6 +1,6 @@
 # DevOps 03 DevOpsDemo
 
-## Lernjournal
+## Lernjournal Frontend 
 
 | Schritt | Beschreibung | Screenshot |
 |--------|--------------|------------|
@@ -17,3 +17,9 @@
 | 11 | Das zugehörige Repository-Interface `ZilanItemRepository` wurde erstellt, um CRUD-Zugriffe auf die Datenbank zu ermöglichen. | ![](images/fronted-11.png) |
 | 12 | Ein neuer REST-Controller `ZilanItemController` wurde implementiert, der GET-, POST- und PUT-Endpunkte zur Verwaltung von `ZilanItem` bereitstellt. | ![](images/fronted-12.png) |
 | 13 | Der REST-Service wurde erfolgreich getestet: Backend läuft, Endpunkte sind über `localhost:8080/Zilan` erreichbar. | ![](images/fronted-13.png) |
+
+## Lernjournal Backend 
+| Schritt | Beschreibung                                                                                              | Screenshot              |
+|--------|-----------------------------------------------------------------------------------------------------------|--------------------------|
+| 1       | Im `backend`-Projekt wurde die Konfiguration der `application.properties` angepasst. Die H2-In-Memory-Datenbank wurde aktiviert und grundlegende Datenbankverbindungsdaten gesetzt. | ![](images/backend-01.png) |
+
