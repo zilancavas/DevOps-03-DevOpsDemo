@@ -26,9 +26,12 @@
 | 3       | Die Spring Boot Anwendung wurde erfolgreich gestartet. Tomcat wurde auf Port 8080 initialisiert und die `DemoApplication` läuft. Die Zeile `Init Data` zeigt, dass initiale Daten geladen wurden. | ![](images/backend-03.png) |
 | 4       | Ich wollte Postman direkt über den Webbrowser (Safari) verwenden, doch dabei ist ein Fehler aufgetreten. Postman weist darauf hin, dass lokale Anfragen mit dem **Desktop Agent** durchgeführt werden müssen. Ich habe daher die Postman App heruntergeladen. | ![](images/backend-05.png) |
 | 5       | Nach der Installation der Postman Desktop App habe ich einen neuen HTTP-Request erstellen wollen. Dafür habe ich im Startbildschirm die Option **HTTP** ausgewählt, um eigene REST-Endpunkte zu testen. | ![](images/backend-06.png) |
-| 6       | In Postman habe ich erfolgreich einen POST-Request an den Endpunkt `/Zilan` gesendet. Im Body habe ich ein JSON-Objekt mit `name`, `beschreibung`, `startDatum` und `endDatum` übermittelt. Die Antwort bestätigte mit Status `200 OK`, dass das Objekt erfolgreich erstellt wurde und eine `id` zugewiesen bekam. | ![](images/backend-07.png) |
-| Schritt | Beschreibung                                                                                                                                        | Screenshot        
+| 6       | In Postman habe ich erfolgreich einen POST-Request an den Endpunkt `/Zilan` gesendet. Im Body habe ich ein JSON-Objekt mit `name`, `beschreibung`, `startDatum` und `endDatum` übermittelt. Die Antwort bestätigte mit Status `200 OK`, dass das Objekt erfolgreich erstellt wurde und eine `id` zugewiesen bekam. | ![](images/backend-07.png) |       
 | 7       | Danach wurde ein GET-Request an den Endpunkt `/Zilan` gesendet, um alle gespeicherten Objekte abzurufen. Die Antwort enthielt das zuvor erstellte Objekt mit allen Details inklusive `id`. Der Statuscode `200 OK` bestätigt den erfolgreichen Abruf. | ![](images/backend-08.png) |
+| 8       | Anschliessend wurde ein DELETE-Request an den Endpunkt `/Zilan/2` gesendet. Damit wurde der Datensatz mit der ID 2 erfolgreich gelöscht. Die Rückmeldung `200 OK` bestätigt, dass der Löschvorgang vom Server erfolgreich ausgeführt wurde. | ![](images/backend-09.png) |
+| 9       | Um einen bestehenden Eintrag zu aktualisieren, wurde ein PUT-Request an den Endpunkt `/Zilan/1` geschickt. Die JSON-Daten im Body enthalten die neuen Werte für `name`, `beschreibung`, `startDatum` und `endDatum`. Die Antwort zeigt, dass das Objekt erfolgreich aktualisiert wurde (`200 OK`). | ![](images/backend-10.png) |
+
+
 
 
 
