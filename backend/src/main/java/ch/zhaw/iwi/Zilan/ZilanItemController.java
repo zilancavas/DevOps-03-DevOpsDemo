@@ -1,4 +1,4 @@
-package ch.zhaw.iwi.Zilan;
+package ch.zhaw.iwi.zilan;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ch.zhaw.iwi.Zilan;
+package ch.zhaw.iwi.zilan;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

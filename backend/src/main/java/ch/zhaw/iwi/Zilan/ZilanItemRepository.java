@@ -1,4 +1,4 @@
-package ch.zhaw.iwi.Zilan;
+package ch.zhaw.iwi.zilan;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

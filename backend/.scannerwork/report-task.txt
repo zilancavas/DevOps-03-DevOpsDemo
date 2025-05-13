@@ -2,5 +2,5 @@ projectKey=devops-06-quality
 serverUrl=http://localhost:9000
 serverVersion=10.7.0.96327
 dashboardUrl=http://localhost:9000/dashboard?id=devops-06-quality
-ceTaskId=a1297927-75cc-4930-87e9-1139b26b5491
-ceTaskUrl=http://localhost:9000/api/ce/task?id=a1297927-75cc-4930-87e9-1139b26b5491
+ceTaskId=821ace26-ba5e-41b6-9d46-77f460aa550f
+ceTaskUrl=http://localhost:9000/api/ce/task?id=821ace26-ba5e-41b6-9d46-77f460aa550f
