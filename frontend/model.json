@@ -1,6 +1,6 @@
 {
     "application": {
-        "title": "DevOpsDemo FS26",
+        "title": "DevOps Dashboard FS2026 – cavaszil",
         "formList": [
             {
                 "id": "OwnUserForm",
@@ -50,27 +50,382 @@
                 ]
             },
             {
-                "id": "ToDoForm",
-                "title": { "default": "ToDo"
+                "id": "LN01Form",
+                "title": {
+                    "default": "LN Abgabe"
                 },
-                "url": "/todo",
+                "url": "/leistungsnachweis0103",
                 "formFieldList": [
                     {
-                        "id": "title",
+                        "id": "name",
                         "type": "text",
-                        "name": { "default": "Titel"
+                        "name": {
+                            "default": "LN-Name"
                         },
                         "required": true,
                         "width": 2
                     },
                     {
-                        "id": "description",
+                        "id": "repoUrl",
                         "type": "text",
-                        "name": { "default": "Text"
+                        "name": {
+                            "default": "GitHub Repo URL"
+                        },
+                        "required": true,
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "screencastStatus",
+                        "type": "text",
+                        "name": {
+                            "default": "Screencast Status (offen / hochgeladen / bewertet)"
                         },
                         "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "screencastLaenge",
+                        "type": "text",
+                        "name": {
+                            "default": "Screencast Länge in Sekunden (max. 60)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "peerReviewStatus",
+                        "type": "text",
+                        "name": {
+                            "default": "Peer Review Status (offen / abgeschlossen)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "kommentar",
+                        "type": "text",
+                        "name": {
+                            "default": "Kommentar / Notiz"
+                        },
+                        "newRow": true,
+                        "height": 3,
                         "maxLength": 4000,
+                        "width": 2
+                    },
+                    {
+                        "type": "deleteButton",
+                        "name": "Delete"
+                    },
+                    {
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "ChecklisteForm",
+                "title": {
+                    "default": "Software-Checkliste"
+                },
+                "url": "/checkliste",
+                "formFieldList": [
+                    {
+                        "id": "name",
+                        "type": "text",
+                        "name": {
+                            "default": "Software (z.B. Java)"
+                        },
+                        "required": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "version",
+                        "type": "text",
+                        "name": {
+                            "default": "Version (z.B. 25.0.1)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "status",
+                        "type": "text",
+                        "name": {
+                            "default": "Status (installiert / nicht installiert)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "type": "deleteButton",
+                        "name": "Delete"
+                    },
+                    {
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "FrageForm",
+                "title": {
+                    "default": "Frage an Dozent"
+                },
+                "url": "/frage",
+                "formFieldList": [
+                    {
+                        "id": "name",
+                        "type": "text",
+                        "name": {
+                            "default": "Betreff"
+                        },
+                        "required": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "frage",
+                        "type": "text",
+                        "name": {
+                            "default": "Meine Frage"
+                        },
+                        "newRow": true,
                         "height": 4,
+                        "maxLength": 4000,
+                        "width": 2
+                    },
+                    {
+                        "id": "status",
+                        "type": "text",
+                        "name": {
+                            "default": "Status (offen / beantwortet)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "antwort",
+                        "type": "text",
+                        "name": {
+                            "default": "Antwort des Dozenten"
+                        },
+                        "newRow": true,
+                        "height": 4,
+                        "maxLength": 4000,
+                        "width": 2
+                    },
+                    {
+                        "type": "deleteButton",
+                        "name": "Delete"
+                    },
+                    {
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "NotizForm",
+                "title": {
+                    "default": "Meine Notiz"
+                },
+                "url": "/notiz",
+                "formFieldList": [
+                    {
+                        "id": "name",
+                        "type": "text",
+                        "name": {
+                            "default": "Titel"
+                        },
+                        "required": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "inhalt",
+                        "type": "text",
+                        "name": {
+                            "default": "Inhalt"
+                        },
+                        "newRow": true,
+                        "height": 5,
+                        "maxLength": 4000,
+                        "width": 2
+                    },
+                    {
+                        "id": "kategorie",
+                        "type": "text",
+                        "name": {
+                            "default": "Kategorie"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "type": "deleteButton",
+                        "name": "Delete"
+                    },
+                    {
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "LN0406Form",
+                "title": {
+                    "default": "LN Abgabe (04-06)"
+                },
+                "url": "/leistungsnachweis0406",
+                "formFieldList": [
+                    {
+                        "id": "name",
+                        "type": "text",
+                        "name": {
+                            "default": "LN-Name"
+                        },
+                        "required": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "repoUrl",
+                        "type": "text",
+                        "name": {
+                            "default": "GitHub Repo URL"
+                        },
+                        "required": true,
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "screencastStatus",
+                        "type": "text",
+                        "name": {
+                            "default": "Screencast Status (offen / hochgeladen / bewertet)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "screencastLaenge",
+                        "type": "text",
+                        "name": {
+                            "default": "Screencast Länge in Sekunden (max. 60)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "peerReviewStatus",
+                        "type": "text",
+                        "name": {
+                            "default": "Peer Review Status (offen / abgeschlossen)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "kommentar",
+                        "type": "text",
+                        "name": {
+                            "default": "Kommentar / Notiz"
+                        },
+                        "newRow": true,
+                        "height": 3,
+                        "maxLength": 4000,
+                        "width": 2
+                    },
+                    {
+                        "type": "deleteButton",
+                        "name": "Delete"
+                    },
+                    {
+                        "type": "cancelButton",
+                        "name": "Cancel"
+                    },
+                    {
+                        "type": "okButton",
+                        "name": "Ok"
+                    }
+                ]
+            },
+            {
+                "id": "LN0710Form",
+                "title": {
+                    "default": "LN Abgabe (07-10)"
+                },
+                "url": "/leistungsnachweis0710",
+                "formFieldList": [
+                    {
+                        "id": "name",
+                        "type": "text",
+                        "name": {
+                            "default": "LN-Name"
+                        },
+                        "required": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "repoUrl",
+                        "type": "text",
+                        "name": {
+                            "default": "GitHub Repo URL"
+                        },
+                        "required": true,
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "screencastStatus",
+                        "type": "text",
+                        "name": {
+                            "default": "Screencast Status (offen / hochgeladen / bewertet)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "screencastLaenge",
+                        "type": "text",
+                        "name": {
+                            "default": "Screencast Länge in Sekunden (max. 60)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "peerReviewStatus",
+                        "type": "text",
+                        "name": {
+                            "default": "Peer Review Status (offen / abgeschlossen)"
+                        },
+                        "newRow": true,
+                        "width": 2
+                    },
+                    {
+                        "id": "kommentar",
+                        "type": "text",
+                        "name": {
+                            "default": "Kommentar / Notiz"
+                        },
+                        "newRow": true,
+                        "height": 3,
+                        "maxLength": 4000,
                         "width": 2
                     },
                     {
@@ -95,47 +450,267 @@
                 "elementList": [
                     {
                         "type": "pageLabel",
-                        "value": "<h4>Willkommen bei DevOps</h4>",
+                        "value": "<h4>DevOps Dashboard FS2026 – cavaszil</h4>",
                         "newRow": true
                     },
                     {
                         "type": "button",
-                        "name": { "default": "ToDo-List"
+                        "name": {
+                            "default": "LN 01–03"
                         },
                         "icon": "fa-file-alt",
-                        "color": "wet-asphalt",
-                        "page": "toDoPage",
+                        "color": "peter-river",
+                        "page": "ln0103Page",
                         "width": 2,
                         "newRow": true
+                    },
+                    {
+                        "type": "button",
+                        "name": {
+                            "default": "LN 04–06"
+                        },
+                        "icon": "fa-file-alt",
+                        "color": "peter-river",
+                        "page": "ln0406Page",
+                        "width": 2
+                    },
+                    {
+                        "type": "button",
+                        "name": {
+                            "default": "LN 07–10"
+                        },
+                        "icon": "fa-file-alt",
+                        "color": "peter-river",
+                        "page": "ln0710Page",
+                        "width": 2
+                    },
+                    {
+                        "type": "button",
+                        "name": {
+                            "default": "Software-Checkliste"
+                        },
+                        "icon": "fa-check-square",
+                        "color": "pumpkin",
+                        "page": "checklistePage",
+                        "width": 2,
+                        "newRow": true
+                    },
+                    {
+                        "type": "button",
+                        "name": {
+                            "default": "Fragen an Dozent"
+                        },
+                        "icon": "fa-question-circle",
+                        "color": "pomegranate",
+                        "page": "fragePage",
+                        "width": 2
+                    },
+                    {
+                        "type": "button",
+                        "name": {
+                            "default": "Meine Notizen"
+                        },
+                        "icon": "fa-sticky-note",
+                        "color": "nephritis",
+                        "page": "notizPage",
+                        "width": 2
                     }
                 ]
             },
             {
-                "id": "toDoPage",
+                "id": "ln0103Page",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "pageLabel",
+                        "value": "<h5>Leistungsnachweise LN01 – LN03</h5>",
+                        "newRow": true
+                    },
+                    {
+                        "type": "newButton",
+                        "name": {
+                            "default": "Abgabe erfassen"
+                        },
+                        "icon": "fa-plus",
+                        "color": "green",
+                        "width": 2,
+                        "newRow": true,
+                        "form": {
+                            "form": "LN01Form"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "name": "LN01–03 Abgaben",
+                        "icon": "fa-file-alt",
+                        "color": "peter-river",
+                        "url": "/leistungsnachweis0103",
+                        "form": {
+                            "form": "LN01Form"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "ln0406Page",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "pageLabel",
+                        "value": "<h5>Leistungsnachweise LN04 – LN06</h5>",
+                        "newRow": true
+                    },
+                    {
+                        "type": "newButton",
+                        "name": {
+                            "default": "Abgabe erfassen"
+                        },
+                        "icon": "fa-plus",
+                        "color": "green",
+                        "width": 2,
+                        "newRow": true,
+                        "form": {
+                            "form": "LN0406Form"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "name": "LN04–06 Abgaben",
+                        "icon": "fa-file-alt",
+                        "color": "peter-river",
+                        "url": "/leistungsnachweis0406",
+                        "form": {
+                            "form": "LN0406Form"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "ln0710Page",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "pageLabel",
+                        "value": "<h5>Leistungsnachweise LN07 – LN10</h5>",
+                        "newRow": true
+                    },
+                    {
+                        "type": "newButton",
+                        "name": {
+                            "default": "Abgabe erfassen"
+                        },
+                        "icon": "fa-plus",
+                        "color": "green",
+                        "width": 2,
+                        "newRow": true,
+                        "form": {
+                            "form": "LN0710Form"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "name": "LN07–10 Abgaben",
+                        "icon": "fa-file-alt",
+                        "color": "peter-river",
+                        "url": "/leistungsnachweis0710",
+                        "form": {
+                            "form": "LN0710Form"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "checklistePage",
                 "elementList": [
                     {
                         "type": "backbutton"
                     },
                     {
                         "type": "newButton",
-                        "name": { "default": "Neues ToDo"
+                        "name": {
+                            "default": "Software hinzufügen"
                         },
-                        "icon": "fa-user",
-                        "color": "green",
+                        "icon": "fa-plus",
+                        "color": "peter-river",
                         "width": 2,
                         "form": {
-                            "form": "ToDoForm"
+                            "form": "ChecklisteForm"
                         }
                     },
                     {
                         "type": "list",
-                        "name": "ToDo",
-                        "icon": "fa-user",
-                        "color": "wet-asphalt",
-                        "search": true,
-                        "url": "/todo",
+                        "name": "Software-Checkliste FS2026",
+                        "icon": "fa-check-square",
+                        "color": "peter-river",
+                        "url": "/checkliste",
                         "form": {
-                            "form": "ToDoForm"
+                            "form": "ChecklisteForm"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "fragePage",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "newButton",
+                        "name": {
+                            "default": "Neue Frage stellen"
+                        },
+                        "icon": "fa-plus",
+                        "color": "pomegranate",
+                        "width": 2,
+                        "form": {
+                            "form": "FrageForm"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "name": "Fragen an Dozent",
+                        "icon": "fa-question-circle",
+                        "color": "pomegranate",
+                        "url": "/frage",
+                        "form": {
+                            "form": "FrageForm"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "notizPage",
+                "elementList": [
+                    {
+                        "type": "backbutton"
+                    },
+                    {
+                        "type": "newButton",
+                        "name": {
+                            "default": "Neue Notiz"
+                        },
+                        "icon": "fa-plus",
+                        "color": "nephritis",
+                        "width": 2,
+                        "form": {
+                            "form": "NotizForm"
+                        }
+                    },
+                    {
+                        "type": "list",
+                        "name": "Meine Notizen",
+                        "icon": "fa-sticky-note",
+                        "color": "nephritis",
+                        "url": "/notiz",
+                        "form": {
+                            "form": "NotizForm"
                         }
                     }
                 ]
