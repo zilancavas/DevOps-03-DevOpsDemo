@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChecklisteController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">ch.zhaw.iwi.devops.demo</a> &gt; <span class="el_source">ChecklisteController.java</span></div><h1>ChecklisteController.java</h1><pre class="source lang-java linenums">package ch.zhaw.iwi.devops.demo;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin
+@RestController
+<span class="fc" id="L21">public class ChecklisteController {</span>
+
+<span class="fc" id="L23">    private Map&lt;Integer, Checkliste&gt; eintraege = new HashMap&lt;&gt;();</span>
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void init() {
+<span class="fc" id="L27">        this.eintraege.put(1, new Checkliste(1, &quot;Git-Client&quot;, &quot;2.51.2&quot;, &quot;installiert&quot;));</span>
+<span class="fc" id="L28">        this.eintraege.put(2, new Checkliste(2, &quot;Java&quot;, &quot;25.0.1&quot;, &quot;installiert&quot;));</span>
+<span class="fc" id="L29">        this.eintraege.put(3, new Checkliste(3, &quot;Gradle&quot;, &quot;9.2.1&quot;, &quot;installiert&quot;));</span>
+<span class="fc" id="L30">        this.eintraege.put(4, new Checkliste(4, &quot;Visual Studio Code&quot;, &quot;1.106.2&quot;, &quot;installiert&quot;));</span>
+<span class="fc" id="L31">        this.eintraege.put(5, new Checkliste(5, &quot;Node&quot;, &quot;24.11.1&quot;, &quot;installiert&quot;));</span>
+<span class="fc" id="L32">        this.eintraege.put(6, new Checkliste(6, &quot;NPM&quot;, &quot;11.6.2&quot;, &quot;installiert&quot;));</span>
+<span class="fc" id="L33">        this.eintraege.put(7, new Checkliste(7, &quot;Docker Desktop&quot;, &quot;4.52.0&quot;, &quot;nicht installiert&quot;));</span>
+<span class="fc" id="L34">        this.eintraege.put(8, new Checkliste(8, &quot;Postman&quot;, &quot;-&quot;, &quot;installiert&quot;));</span>
+<span class="fc" id="L35">    }</span>
+
+    @GetMapping(&quot;/services/checkliste&quot;)
+    public List&lt;PathListEntry&lt;Integer&gt;&gt; getAll() {
+<span class="nc" id="L39">        var result = new ArrayList&lt;PathListEntry&lt;Integer&gt;&gt;();</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        for (var eintrag : this.eintraege.values()) {</span>
+<span class="nc" id="L41">            var entry = new PathListEntry&lt;Integer&gt;();</span>
+<span class="nc" id="L42">            entry.setKey(eintrag.getId(), &quot;checklisteKey&quot;);</span>
+<span class="nc" id="L43">            entry.setName(eintrag.getName());</span>
+<span class="nc" id="L44">            entry.getDetails().add(eintrag.getVersion());</span>
+<span class="nc" id="L45">            entry.setTooltip(eintrag.getStatus());</span>
+<span class="nc" id="L46">            result.add(entry);</span>
+<span class="nc" id="L47">        }</span>
+<span class="nc" id="L48">        return result.stream().sorted(Comparator.comparing(PathListEntry::getName)).toList();</span>
+    }
+
+    @GetMapping(&quot;/services/checkliste/{key}&quot;)
+    public Checkliste getById(@PathVariable(&quot;key&quot;) Integer key) {
+<span class="nc" id="L53">        return this.eintraege.get(key);</span>
+    }
+
+    @PostMapping(&quot;/services/checkliste&quot;)
+    public void create(@RequestBody Checkliste eintrag) {
+<span class="nc" id="L58">        var newId = this.eintraege.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;</span>
+<span class="nc" id="L59">        eintrag.setId(newId);</span>
+<span class="nc" id="L60">        this.eintraege.put(newId, eintrag);</span>
+<span class="nc" id="L61">    }</span>
+
+    @PutMapping(&quot;/services/checkliste/{key}&quot;)
+    public void update(@PathVariable(&quot;key&quot;) Integer key, @RequestBody Checkliste eintrag) {
+<span class="nc" id="L65">        eintrag.setId(key);</span>
+<span class="nc" id="L66">        this.eintraege.put(key, eintrag);</span>
+<span class="nc" id="L67">    }</span>
+
+    @DeleteMapping(&quot;/services/checkliste/{key}&quot;)
+    public Checkliste delete(@PathVariable(&quot;key&quot;) Integer key) {
+<span class="nc" id="L71">        return this.eintraege.remove(key);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

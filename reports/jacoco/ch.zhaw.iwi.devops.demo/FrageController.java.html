@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FrageController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">ch.zhaw.iwi.devops.demo</a> &gt; <span class="el_source">FrageController.java</span></div><h1>FrageController.java</h1><pre class="source lang-java linenums">package ch.zhaw.iwi.devops.demo;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin
+@RestController
+<span class="fc" id="L21">public class FrageController {</span>
+
+<span class="fc" id="L23">    private Map&lt;Integer, Frage&gt; eintraege = new HashMap&lt;&gt;();</span>
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void init() {
+<span class="fc" id="L27">        this.eintraege.put(1, new Frage(1, &quot;Screencast Format&quot;, &quot;Muss der Screencast zwingend auf Hochdeutsch sein?&quot;, &quot;beantwortet&quot;, &quot;Ja, Hochdeutsch ist Pflicht.&quot;));</span>
+<span class="fc" id="L28">        this.eintraege.put(2, new Frage(2, &quot;Peer Review&quot;, &quot;Wie viele LNs müssen wir pro Peer Review bewerten?&quot;, &quot;offen&quot;, &quot;&quot;));</span>
+<span class="fc" id="L29">    }</span>
+
+    @GetMapping(&quot;/services/frage&quot;)
+    public List&lt;PathListEntry&lt;Integer&gt;&gt; getAll() {
+<span class="nc" id="L33">        var result = new ArrayList&lt;PathListEntry&lt;Integer&gt;&gt;();</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        for (var eintrag : this.eintraege.values()) {</span>
+<span class="nc" id="L35">            var entry = new PathListEntry&lt;Integer&gt;();</span>
+<span class="nc" id="L36">            entry.setKey(eintrag.getId(), &quot;frageKey&quot;);</span>
+<span class="nc" id="L37">            entry.setName(eintrag.getName());</span>
+<span class="nc" id="L38">            entry.getDetails().add(eintrag.getStatus());</span>
+<span class="nc" id="L39">            entry.setTooltip(eintrag.getFrage());</span>
+<span class="nc" id="L40">            result.add(entry);</span>
+<span class="nc" id="L41">        }</span>
+<span class="nc" id="L42">        return result.stream().sorted(Comparator.comparing(PathListEntry::getName)).toList();</span>
+    }
+
+    @GetMapping(&quot;/services/frage/{key}&quot;)
+    public Frage getById(@PathVariable(&quot;key&quot;) Integer key) {
+<span class="nc" id="L47">        return this.eintraege.get(key);</span>
+    }
+
+    @PostMapping(&quot;/services/frage&quot;)
+    public void create(@RequestBody Frage eintrag) {
+<span class="nc" id="L52">        var newId = this.eintraege.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;</span>
+<span class="nc" id="L53">        eintrag.setId(newId);</span>
+<span class="nc" id="L54">        this.eintraege.put(newId, eintrag);</span>
+<span class="nc" id="L55">    }</span>
+
+    @PutMapping(&quot;/services/frage/{key}&quot;)
+    public void update(@PathVariable(&quot;key&quot;) Integer key, @RequestBody Frage eintrag) {
+<span class="nc" id="L59">        eintrag.setId(key);</span>
+<span class="nc" id="L60">        this.eintraege.put(key, eintrag);</span>
+<span class="nc" id="L61">    }</span>
+
+    @DeleteMapping(&quot;/services/frage/{key}&quot;)
+    public Frage delete(@PathVariable(&quot;key&quot;) Integer key) {
+<span class="nc" id="L65">        return this.eintraege.remove(key);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LeistungsnachweisController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">ch.zhaw.iwi.devops.demo</a> &gt; <span class="el_source">LeistungsnachweisController.java</span></div><h1>LeistungsnachweisController.java</h1><pre class="source lang-java linenums">package ch.zhaw.iwi.devops.demo;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin
+@RestController
+<span class="fc" id="L21">public class LeistungsnachweisController {</span>
+
+<span class="fc" id="L23">    private Map&lt;Integer, Leistungsnachweis&gt; ln0103 = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L24">    private Map&lt;Integer, Leistungsnachweis&gt; ln0406 = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L25">    private Map&lt;Integer, Leistungsnachweis&gt; ln0710 = new HashMap&lt;&gt;();</span>
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void init() {
+<span class="fc" id="L29">        ln0103.put(1, new Leistungsnachweis(1, &quot;LN01&quot;, &quot;https://github.com/zilancavas/DevOps-01-Version-Control-digialor-cavaszil&quot;, &quot;hochgeladen&quot;, &quot;58&quot;, &quot;abgeschlossen&quot;, &quot;Git &amp; Versionskontrolle&quot;));</span>
+<span class="fc" id="L30">        ln0103.put(2, new Leistungsnachweis(2, &quot;LN02&quot;, &quot;https://github.com/zilancavas/DevOps-02-Build&quot;, &quot;hochgeladen&quot;, &quot;55&quot;, &quot;abgeschlossen&quot;, &quot;Build Tools&quot;));</span>
+<span class="fc" id="L31">        ln0103.put(3, new Leistungsnachweis(3, &quot;LN03&quot;, &quot;https://github.com/zilancavas/DevOps-03-DevOpsDemo&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;DevOpsDemo&quot;));</span>
+
+<span class="fc" id="L33">        ln0406.put(1, new Leistungsnachweis(1, &quot;LN04&quot;, &quot;&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;Containers&quot;));</span>
+<span class="fc" id="L34">        ln0406.put(2, new Leistungsnachweis(2, &quot;LN05&quot;, &quot;&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;Unit Tests&quot;));</span>
+<span class="fc" id="L35">        ln0406.put(3, new Leistungsnachweis(3, &quot;LN06&quot;, &quot;&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;Quality&quot;));</span>
+
+<span class="fc" id="L37">        ln0710.put(1, new Leistungsnachweis(1, &quot;LN07&quot;, &quot;&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;CI 1/2&quot;));</span>
+<span class="fc" id="L38">        ln0710.put(2, new Leistungsnachweis(2, &quot;LN08&quot;, &quot;&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;CI 2/2&quot;));</span>
+<span class="fc" id="L39">        ln0710.put(3, new Leistungsnachweis(3, &quot;LN09&quot;, &quot;&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;Docker Deployment&quot;));</span>
+<span class="fc" id="L40">        ln0710.put(4, new Leistungsnachweis(4, &quot;LN10&quot;, &quot;&quot;, &quot;offen&quot;, &quot;0&quot;, &quot;offen&quot;, &quot;Cloud Deployment&quot;));</span>
+<span class="fc" id="L41">    }</span>
+
+    @GetMapping(&quot;/services/leistungsnachweis0103&quot;)
+<span class="nc" id="L44">    public List&lt;PathListEntry&lt;Integer&gt;&gt; getAll0103() { return toList(ln0103, &quot;ln0103Key&quot;); }</span>
+    @GetMapping(&quot;/services/leistungsnachweis0103/{key}&quot;)
+<span class="nc" id="L46">    public Leistungsnachweis get0103(@PathVariable Integer key) { return ln0103.get(key); }</span>
+    @PostMapping(&quot;/services/leistungsnachweis0103&quot;)
+    public void create0103(@RequestBody Leistungsnachweis e) {
+<span class="nc" id="L49">        int id = ln0103.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;</span>
+<span class="nc" id="L50">        e.setId(id); ln0103.put(id, e);</span>
+<span class="nc" id="L51">    }</span>
+    @PutMapping(&quot;/services/leistungsnachweis0103/{key}&quot;)
+<span class="nc" id="L53">    public void update0103(@PathVariable Integer key, @RequestBody Leistungsnachweis e) { e.setId(key); ln0103.put(key, e); }</span>
+    @DeleteMapping(&quot;/services/leistungsnachweis0103/{key}&quot;)
+<span class="nc" id="L55">    public Leistungsnachweis delete0103(@PathVariable Integer key) { return ln0103.remove(key); }</span>
+
+    @GetMapping(&quot;/services/leistungsnachweis0406&quot;)
+<span class="nc" id="L58">    public List&lt;PathListEntry&lt;Integer&gt;&gt; getAll0406() { return toList(ln0406, &quot;ln0406Key&quot;); }</span>
+    @GetMapping(&quot;/services/leistungsnachweis0406/{key}&quot;)
+<span class="nc" id="L60">    public Leistungsnachweis get0406(@PathVariable Integer key) { return ln0406.get(key); }</span>
+    @PostMapping(&quot;/services/leistungsnachweis0406&quot;)
+    public void create0406(@RequestBody Leistungsnachweis e) {
+<span class="nc" id="L63">        int id = ln0406.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;</span>
+<span class="nc" id="L64">        e.setId(id); ln0406.put(id, e);</span>
+<span class="nc" id="L65">    }</span>
+    @PutMapping(&quot;/services/leistungsnachweis0406/{key}&quot;)
+<span class="nc" id="L67">    public void update0406(@PathVariable Integer key, @RequestBody Leistungsnachweis e) { e.setId(key); ln0406.put(key, e); }</span>
+    @DeleteMapping(&quot;/services/leistungsnachweis0406/{key}&quot;)
+<span class="nc" id="L69">    public Leistungsnachweis delete0406(@PathVariable Integer key) { return ln0406.remove(key); }</span>
+
+    @GetMapping(&quot;/services/leistungsnachweis0710&quot;)
+<span class="nc" id="L72">    public List&lt;PathListEntry&lt;Integer&gt;&gt; getAll0710() { return toList(ln0710, &quot;ln0710Key&quot;); }</span>
+    @GetMapping(&quot;/services/leistungsnachweis0710/{key}&quot;)
+<span class="nc" id="L74">    public Leistungsnachweis get0710(@PathVariable Integer key) { return ln0710.get(key); }</span>
+    @PostMapping(&quot;/services/leistungsnachweis0710&quot;)
+    public void create0710(@RequestBody Leistungsnachweis e) {
+<span class="nc" id="L77">        int id = ln0710.keySet().stream().max(Comparator.naturalOrder()).orElse(0) + 1;</span>
+<span class="nc" id="L78">        e.setId(id); ln0710.put(id, e);</span>
+<span class="nc" id="L79">    }</span>
+    @PutMapping(&quot;/services/leistungsnachweis0710/{key}&quot;)
+<span class="nc" id="L81">    public void update0710(@PathVariable Integer key, @RequestBody Leistungsnachweis e) { e.setId(key); ln0710.put(key, e); }</span>
+    @DeleteMapping(&quot;/services/leistungsnachweis0710/{key}&quot;)
+<span class="nc" id="L83">    public Leistungsnachweis delete0710(@PathVariable Integer key) { return ln0710.remove(key); }</span>
+
+    private List&lt;PathListEntry&lt;Integer&gt;&gt; toList(Map&lt;Integer, Leistungsnachweis&gt; map, String keyName) {
+<span class="nc" id="L86">        var result = new ArrayList&lt;PathListEntry&lt;Integer&gt;&gt;();</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        for (var e : map.values()) {</span>
+<span class="nc" id="L88">            var entry = new PathListEntry&lt;Integer&gt;();</span>
+<span class="nc" id="L89">            entry.setKey(e.getId(), keyName);</span>
+<span class="nc" id="L90">            entry.setName(e.getName());</span>
+<span class="nc" id="L91">            entry.getDetails().add(e.getScreencastStatus());</span>
+<span class="nc" id="L92">            entry.setTooltip(e.getKommentar());</span>
+<span class="nc" id="L93">            result.add(entry);</span>
+<span class="nc" id="L94">        }</span>
+<span class="nc" id="L95">        return result.stream().sorted(Comparator.comparing(PathListEntry::getName)).toList();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
