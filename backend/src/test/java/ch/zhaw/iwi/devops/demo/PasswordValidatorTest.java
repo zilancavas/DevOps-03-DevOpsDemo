@@ -23,4 +23,9 @@ public class PasswordValidatorTest {
         PasswordValidator validator = new PasswordValidator();
         assertTrue(validator.hasNumber("abc123"));
     }
+    @Test
+    void testPasswordTooLong() {
+        PasswordValidator validator = new PasswordValidator();
+        assertFalse(validator.validate("AbcdefghijklmnopqrstuvwxyzABC123"));
+    }
 }
