@@ -1,7 +1,7 @@
 # docker build -t mosazhaw/devopsdemo .
 # docker run -p 9001:8080 --name dockerize-devopsdemo -d mosazhaw/devopsdemo
 
-FROM eclipse-temurin:25.0.1_8-jdk-noble
+FROM eclipse-temurin:21-jdk-noble
 RUN apt-get update && apt-get install -y curl \
   && curl -sL https://deb.nodesource.com/setup_24.x | bash - \
   && apt-get install -y nodejs \
