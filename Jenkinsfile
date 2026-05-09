@@ -1,13 +1,9 @@
 pipeline {
     agent any
-    environment {
-        JAVA_HOME = "/opt/jdks/jdk-25"
-    }
     stages {
         stage('Checkout') { 
             steps {
                 sh 'echo checkout'
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub-mosazhaw', url: 'https://github.com/devopszhaw/DevOpsDemo']])
             }
         }
         stage('Build') { 
@@ -17,9 +13,9 @@ pipeline {
                     sh 'chmod +x ./gradlew'
                     sh './gradlew test'    
                 }
-                recordCoverage(tools: [[parser: 'JACOCO',pattern: '**/jacocoTestReport.xml']])
-                junit stdioRetention: '', testResults: '**/test-results/test/*.xml'
-                nodejs('24.11.1') {
+                jacoco()
+                junit stdioRetention: '', testResults: '**/build/test-results/test/*.xml'
+                nodejs('NodeJS 24.11.1') {
                     dir('frontend') {
                         sh 'npm install'
                         sh 'npm run lint:html'                    
@@ -32,9 +28,7 @@ pipeline {
                 }
                 withCredentials([string(credentialsId: 'Sonarqube-Frontend', variable: 'TOKEN')]) {
                     dir('frontend') {
-                        nodejs('24.11.1') {
-                            sh 'npx sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.projectKey=DevOpsDemo-Frontend -Dsonar.projectName=\'DevOpsDemo-Frontend\' -Dsonar.token=$TOKEN'    
-                        }
+                        sh 'npx sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.projectKey=DevOpsDemo-Frontend -Dsonar.projectName=\'DevOpsDemo-Frontend\' -Dsonar.token=$TOKEN'    
                     }                    
                 }
             }
@@ -42,11 +36,10 @@ pipeline {
         stage('Docker') {
             steps {
                 sh '''
-                    export DOCKER_HOST=tcp://host.docker.internal:2375
-                    docker build -t mosazhaw/devopsdemo .
+                    export DOCKER_HOST=tcp://172.17.0.2:2375
+                    docker build -t cavaszil/devopsdemo .
                 '''
             }
         }
     }
 }
-
