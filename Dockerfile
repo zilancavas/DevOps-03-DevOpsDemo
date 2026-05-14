@@ -13,7 +13,7 @@ RUN cd frontend && npm install
 RUN mkdir -p backend/src/main/resources/static
 RUN mv frontend/* backend/src/main/resources/static
 RUN cd backend && sed -i 's/\r$//' gradlew && chmod +x gradlew
-RUN cd backend && ./gradlew build
+RUN cd backend && ./gradlew clean build
 
 EXPOSE 8080
 CMD ["java", "-jar", "/usr/src/app/backend/build/libs/demo-0.0.1-SNAPSHOT.jar"]
